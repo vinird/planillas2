@@ -54,9 +54,9 @@ $pdf->Ln(10);
 $pdf->SetFont('Arial','B',8);
 
 ////////////////// Contenido //////////////////////
-$pdf->Cell(25,10,iconv("UTF-8","ISO-8859-1","Cédula"),1,0,"C");
+$pdf->Cell(20,10,iconv("UTF-8","ISO-8859-1","Cédula"),1,0,"C");
+$pdf->Cell(40,10,"Apellidos",1,0,"C");
 $pdf->Cell(25,10,"Nombre",1,0,"C");
-$pdf->Cell(35,10,"Apellidos",1,0,"C");
 $pdf->Cell(27,10,"Grado Academico",1,0,"C");
 $pdf->Cell(25,10,"Nombramiento",1,0,"C");
 $pdf->Cell(27,10,"Jornada Asignada",1,0,"C");
@@ -68,9 +68,9 @@ $pdf->SetFont('Arial','',8);
 
 while ($fila = mysqli_fetch_assoc($resultadoDocente)) {
 	$cedula_docente = $fila['cedula'];
-	$pdf->Cell(25,10,$cedula_docente,1,0,"C");
+	$pdf->Cell(20,10,$cedula_docente,1,0,"C");
+	$pdf->Cell(40,10,iconv("UTF-8","ISO-8859-1",$fila['apellidos']),1,0,"C");
 	$pdf->Cell(25,10,iconv("UTF-8","ISO-8859-1",$fila['nombre']),1,0,"C");
-	$pdf->Cell(35,10,iconv("UTF-8","ISO-8859-1",$fila['apellidos']),1,0,"C");
 
 	//Grado Academico
 	$grado_ac;
@@ -125,7 +125,7 @@ while ($fila = mysqli_fetch_assoc($resultadoDocente)) {
 	$faltante = 1 - $tiempoIndividual;
 
 	if ($fila['tipo_contrato'] == 1) {
-		if ($faltante == 0 || $faltante == 1) {
+		if ($faltante == 1) {
 			$pdf->SetTextColor(0,0,0);
 		} else {
 			$pdf->SetTextColor(255,0,0);

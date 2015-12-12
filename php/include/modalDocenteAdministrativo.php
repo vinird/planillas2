@@ -56,9 +56,9 @@ session_start();
             </div>
             <div class="form-group col-xs-12 col-sm-12 col-lg-12">
               <label for="txtApellidos2">Apellidos:</label>
-              <input maxlength="20" type="text" class="form-control input-border" name="txtApellidos2" placeholder="Apellidos" <?php
+              <input maxlength="40" type="text" class="form-control input-border" name="txtApellidos2" placeholder="Apellidos" <?php
               if (isset($_GET['modalDocenteAdministrativo'])) {
-                echo "value=".$_GET['apellidos'];
+                echo 'value="'.$_GET['apellidos'].'"';
               } ?>>
             </div>
             <div class="form-group col-xs-12 col-sm-12 col-lg-12">
